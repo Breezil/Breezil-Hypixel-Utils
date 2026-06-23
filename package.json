@@ -1,0 +1,52 @@
+{
+  "name": "@breezil/hypixel-utils",
+  "version": "1.0.0",
+  "description": "Hypixel reference data & render helpers — teams, prestiges, ranks, maps, colours. A static info-hub for interpreting/displaying Hypixel data. No network.",
+  "keywords": [
+    "breezil",
+    "hypixel",
+    "minecraft",
+    "reference",
+    "ranks",
+    "bedwars",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "Breezil",
+  "homepage": "https://github.com/Breezil/Breezil-Hypixel-Utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Breezil/Breezil-Hypixel-Utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Breezil/Breezil-Hypixel-Utils/issues"
+  },
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "vitepress": "^1.6.3"
+  },
+  "overrides": {
+    "esbuild": "^0.25.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
+
