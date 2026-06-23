@@ -28,7 +28,7 @@ The function inspects the raw player object and resolves the tag in the followin
 2. **Staff / special ranks.** If `player.rank` is a string that is neither `undefined` nor `"NORMAL"` and matches a key in [`STAFF_RANK_TAGS`](#staff-rank-tags), the matching coloured tag is returned directly.
 3. **SUPERSTAR (MVP++).** If `player.monthlyPackageRank === "SUPERSTAR"`, it returns the `MVP++` tag. The bracket/base colour is `§b` (aqua) when `player.monthlyRankColor === "AQUA"`, otherwise `§6` (gold). The `++` is coloured with the resolved plus colour.
 4. **Package ranks.** Otherwise it switches on `player.newPackageRank`:
-   - `MVP_PLUS` returns `§b[MVP<plusColor>+§b]`
+   - `MVP_PLUS` returns `§b[MVP§c+§b]`, where the `+` takes the resolved plus colour (red by default)
    - `MVP` returns `§b[MVP]`
    - `VIP_PLUS` returns `§a[VIP§6+§a]`
    - `VIP` returns `§a[VIP]`

@@ -27,7 +27,7 @@
 
 Breezil-Hypixel-Utils is a fully open-source TypeScript library: a static "info hub" for Hypixel. It bundles the reference data and render helpers you need to interpret and display Hypixel data the public API does not serve, things like ranks and colours, BedWars teams, prestiges and coloured star tags, shop prices, map build heights, the event timeline, XP gains, challenges, quests, achievements, and every cosmetic family.
 
-It is pure: no network, no config, no side effects. It powers [`@breezil/hypixel-api`](https://github.com/Breezil/Breezil-Hypixel-Api) and works just as well standalone. The library is partitioned by minigame so it can grow to cover the whole network (BedWars today; more games slot in as siblings).
+It is pure: no network, no config, no side effects, and works standalone in any project. The library is partitioned by minigame so it can grow to cover the whole network (BedWars today; more games slot in as siblings).
 
 This README is a summary. The **[full reference lives in the docs](https://breezil.github.io/Breezil-Hypixel-Utils/)**, where every export, type, and data table is documented in detail.
 
@@ -152,9 +152,9 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for the full tex
 
 ## Acknowledgements
 
-- The [Hypixel API](https://api.hypixel.net) and community-documented reference data
+- The [Hypixel Wiki](https://hypixel.fandom.com/wiki/Hypixel_Wiki) and community-documented reference data
+- Community members who helped compile reference data, including [.hxrmcny](https://guns.lol/.hxrmcny)
 - Everyone in the [Breezil Discord](https://discord.gg/7SxbNMYQNa)
-- The [`@breezil/hypixel-api`](https://github.com/Breezil/Breezil-Hypixel-Api) project this hub feeds
 
 ---
 

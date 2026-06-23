@@ -2,7 +2,7 @@
 
 `@breezil/hypixel-utils` is a fully open-source TypeScript library: a static "info hub" for Hypixel. It bundles the reference data and small render helpers you need to interpret and display Hypixel data that the public API does not serve, like ranks and colours, BedWars prestiges and coloured star tags, shop prices, map build heights, the game event timeline, XP gains, challenges, quests, achievements, and every cosmetic family.
 
-It is pure and makes no network calls. It powers [`@breezil/hypixel-api`](https://github.com/Breezil/Breezil-Hypixel-Api) and works just as well standalone whenever you need to turn raw Hypixel values into something readable.
+It is pure and makes no network calls. It works standalone whenever you need to turn raw Hypixel values into something readable.
 
 ## Install
 

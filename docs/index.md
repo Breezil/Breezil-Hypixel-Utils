@@ -43,6 +43,6 @@ features:
     details: Reach everything through a single HypixelReference object, namespaced by minigame, or import any dataset by name.
   - icon: 🔌
     title: Pure and standalone
-    details: No network, no config, no side effects. Works on its own or alongside @breezil/hypixel-api.
+    details: No network, no config, no side effects. Use it standalone in any project.
 ---
 
