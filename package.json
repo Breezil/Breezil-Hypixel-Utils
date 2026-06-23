@@ -1,6 +1,6 @@
 {
   "name": "@breezil/hypixel-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hypixel reference data and render helpers: teams, prestiges, ranks, maps, colours. A static info hub for interpreting and displaying Hypixel data. No network.",
   "keywords": [
     "breezil",
