@@ -13,9 +13,9 @@
 
 [Documentation](https://breezil.github.io/Breezil-Hypixel-Utils/)
 &nbsp;&nbsp;|&nbsp;&nbsp;
-[Report a bug](https://github.com/Breezil/Breezil-Hypixel-Utils/issues/new?labels=bug)
+[Report a bug](https://github.com/Breezil/Breezil-Hypixel-Utils/issues/new?template=bug_report.yml)
 &nbsp;&nbsp;|&nbsp;&nbsp;
-[Request a feature](https://github.com/Breezil/Breezil-Hypixel-Utils/issues/new?labels=enhancement)
+[Request a feature](https://github.com/Breezil/Breezil-Hypixel-Utils/issues/new?template=feature_request.yml)
 &nbsp;&nbsp;|&nbsp;&nbsp;
 [Join the Discord](https://discord.gg/7SxbNMYQNa)
 
@@ -120,7 +120,7 @@ The docs site auto-deploys to GitHub Pages on every push to `main`. The npm pack
 - [ ] Add more Hypixel minigames as sibling sections (SkyWars, Duels, and beyond)
 - [ ] Expand cross-game reference data the API does not serve
 
-Want something added? [Open a feature request](https://github.com/Breezil/Breezil-Hypixel-Utils/issues/new?labels=enhancement).
+Want something added? [Open a feature request](https://github.com/Breezil/Breezil-Hypixel-Utils/issues/new?template=feature_request.yml).
 
 ## Contributing
 
