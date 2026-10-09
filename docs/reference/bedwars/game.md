@@ -1,6 +1,6 @@
 # BedWars Teams, Maps, Events, XP, and Modes
 
-Pure reference data for Hypixel BedWars: the teams, the map list and per-map build-height limits, the game event timeline, XP gain values, and Dream mode definitions. All exports come from `@breezil/hypixel-utils`.
+Pure reference data for Hypixel BedWars: the teams, the map list and per-map build-height limits, the game event timeline, generator tiers, XP gain values, the standard modes, and Dream mode definitions. All exports come from `@breezil/hypixel-utils`.
 
 ## Teams
 
@@ -38,6 +38,14 @@ BEDWARS_TEAMS.R; // { letter: "R", name: "Red", color: "§c" }
 | W      | White  | `§f`        |
 | P      | Pink   | `§d`        |
 | S      | Gray   | `§7`        |
+
+### Team order
+
+`BEDWARS_TEAM_ORDER` lists the team letters in the order Hypixel seats teams: `["R", "B", "G", "Y", "A", "W", "P", "S"]`. A game with fewer teams uses the first ones, so a 4-team game is Red, Blue, Green and Yellow.
+
+```ts
+const BEDWARS_TEAM_ORDER: readonly string[];
+```
 
 ## Maps and build heights
 
@@ -349,6 +357,98 @@ finalKill?.xp; // 10
 | Diamond from diamond generator | 2   |
 | Emerald from emerald generator | 3   |
 
+## Generators
+
+The diamond and emerald generators each go through three tiers. `BEDWARS_GENERATOR_TIERS` gives, per resource, each tier's numeral, the second of the game it starts at (taken from the events timeline) and the seconds between spawns. `bedWarsGeneratorTier` picks the tier for a moment of the game.
+
+```ts
+type BedWarsResource = "diamond" | "emerald";
+
+interface BedWarsGeneratorTier {
+  /** How Hypixel writes the tier, as in "Diamond II". */
+  readonly numeral: string;
+  /** Seconds from game start when this tier begins. */
+  readonly from: number;
+  /** Seconds between spawns at this tier. */
+  readonly interval: number;
+}
+
+const BEDWARS_GENERATOR_TIERS: Readonly<
+  Record<BedWarsResource, readonly BedWarsGeneratorTier[]>
+>;
+function bedWarsGeneratorTier(
+  resource: BedWarsResource,
+  elapsedSeconds: number,
+): BedWarsGeneratorTier;
+```
+
+### Usage
+
+```ts
+import { bedWarsGeneratorTier } from "@breezil/hypixel-utils";
+
+bedWarsGeneratorTier("diamond", 800); // { numeral: "II", from: 360, interval: 24 }
+```
+
+### All tiers
+
+| Resource | Tier | From (s) | Interval (s) |
+| -------- | ---- | -------- | ------------ |
+| Diamond  | I    | 0        | 30           |
+| Diamond  | II   | 360      | 24           |
+| Diamond  | III  | 1080     | 12           |
+| Emerald  | I    | 0        | 56           |
+| Emerald  | II   | 720      | 40           |
+| Emerald  | III  | 1440     | 28           |
+
+## Modes
+
+`BEDWARS_MODES` describes the standard modes: the id inside Hypixel's location mode (as in `BEDWARS_EIGHT_ONE`), the key their stats are filed under, the team count and size, how many of each generator the maps have, and how much one generator holds before it stops filling. `bedWarsModeOf` resolves a location mode to its standard mode, so variants such as `BEDWARS_EIGHT_TWO_RUSH` resolve to their base, and anything else gives `null`.
+
+```ts
+type BedWarsSubmodeKey =
+  | "solo"
+  | "doubles"
+  | "threes"
+  | "fours"
+  | "fourVsFour"
+  | "castle";
+
+interface BedWarsMode {
+  readonly id: string;
+  readonly key: BedWarsSubmodeKey;
+  readonly teams: number;
+  readonly teamSize: number;
+  readonly generators: Readonly<Record<"diamond" | "emerald", number>>;
+  readonly itemCaps: Readonly<Record<"diamond" | "emerald", number>>;
+}
+
+const BEDWARS_MODES: readonly BedWarsMode[];
+function bedWarsModeOf(
+  locationMode: string | null | undefined,
+): BedWarsMode | null;
+```
+
+### Usage
+
+```ts
+import { bedWarsModeOf } from "@breezil/hypixel-utils";
+
+bedWarsModeOf("BEDWARS_EIGHT_TWO_RUSH")?.key; // "doubles"
+bedWarsModeOf("SKYWARS_SOLO_NORMAL"); // null
+```
+
+### All modes
+
+| Id         | Key        | Teams | Team size | Diamond gens | Emerald gens | Diamond cap | Emerald cap |
+| ---------- | ---------- | ----- | --------- | ------------ | ------------ | ----------- | ----------- |
+| EIGHT_ONE  | solo       | 8     | 1         | 4            | 4            | 4           | 2           |
+| EIGHT_TWO  | doubles    | 8     | 2         | 4            | 4            | 4           | 2           |
+| FOUR_THREE | threes     | 4     | 3         | 4            | 2            | 8           | 6           |
+| FOUR_FOUR  | fours      | 4     | 4         | 4            | 2            | 8           | 6           |
+| TWO_FOUR   | fourVsFour | 2     | 4         | 4            | 2            | 8           | 6           |
+| CASTLE     | castle     | 2     | 40        | 4            | 2            | 8           | 6           |
+
 ## Dream modes
 
 Dream modes are rotating, limited-time BedWars variants. The `BEDWARS_DREAM_MODES` table pairs a stable snake_case `id` with its display `name`. Pure reference data, no runtime or network logic.
@@ -383,4 +483,3 @@ mode?.name; // "Voidless"
 | lucky_blocks_v2 | Lucky Blocks v2 |
 | swappage        | Swappage        |
 | one_block       | One Block       |
-

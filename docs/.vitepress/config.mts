@@ -194,7 +194,10 @@ export default {
       },
       {
         text: "General",
-        items: [{ text: "Ranks and Colours", link: "/reference/ranks" }],
+        items: [
+          { text: "Ranks and Colours", link: "/reference/ranks" },
+          { text: "Games", link: "/reference/games" },
+        ],
       },
       {
         text: "BedWars",
@@ -219,6 +222,10 @@ export default {
           },
         ],
       },
+      {
+        text: "TNT Games",
+        items: [{ text: "Prefixes and Maps", link: "/reference/tntgames" }],
+      },
     ],
     socialLinks: [
       {
@@ -238,4 +245,3 @@ export default {
     },
   },
 };
-

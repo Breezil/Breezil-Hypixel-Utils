@@ -22,3 +22,18 @@ export const BEDWARS_TEAMS: Readonly<Record<string, BedWarsTeam>> = {
   S: { letter: "S", name: "Gray", color: "§7" },
 };
 
+/**
+ * The order teams sit around a BedWars map, by letter: walking around the
+ * map, each base is the next team in this list. Fewer teams take the first
+ * entries.
+ */
+export const BEDWARS_TEAM_ORDER: readonly string[] = [
+  "R",
+  "B",
+  "G",
+  "Y",
+  "A",
+  "W",
+  "P",
+  "S",
+];
