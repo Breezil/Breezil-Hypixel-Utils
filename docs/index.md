@@ -22,16 +22,16 @@ hero:
 features:
   - icon: 🎨
     title: Ranks and colours
-    details: Minecraft colour codes, staff rank tags, and formatRankTag to build a player's fully coloured rank from a raw Hypixel player object.
+    details: Minecraft colour codes, staff rank tags, and formatRankTag to build a player's fully coloured rank from a raw or parsed Hypixel player.
   - icon: ⭐
     title: BedWars prestiges
-    details: All 101 prestiges from level 1 to 10000, with names and exact colour codes, plus bedWarsStarTag and bedWarsPrestigeName helpers.
+    details: All 101 prestiges from level 1 to 10000, with names and exact colour codes, plus bedWarsStarTag for the default or Prestige Customizer look and bedWarsPrestigeName.
   - icon: 🛒
     title: Shop and upgrades
     details: Every item-shop price and team-upgrade cost, with the Solo/Doubles vs 3s/4s differences modelled.
   - icon: 🗺️
     title: Maps, events, XP, modes
-    details: Per-map build heights, the game event timeline, current XP gains per source, and the dream-mode list.
+    details: Per-map build heights, the game event timeline, generator tiers, the standard modes, current XP gains per source, and the dream-mode list.
   - icon: 🏆
     title: Progression
     details: Challenges, daily and weekly quests, and the full achievement set (challenge, tiered, and legacy).
@@ -45,4 +45,3 @@ features:
     title: Pure and standalone
     details: No network, no config, no side effects. Use it standalone in any project.
 ---
-

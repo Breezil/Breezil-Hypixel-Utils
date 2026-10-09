@@ -7,6 +7,7 @@
 export * from "./teams";
 export * from "./maps";
 export * from "./events";
+export * from "./generators";
 export * from "./prestiges";
 export * from "./shop";
 export * from "./modes";
@@ -16,7 +17,7 @@ export * from "./quests";
 export * from "./achievements";
 export * from "./cosmetics";
 
-import { BEDWARS_TEAMS } from "./teams";
+import { BEDWARS_TEAMS, BEDWARS_TEAM_ORDER } from "./teams";
 import {
   BEDWARS_MAP_HEIGHTS,
   BEDWARS_MAPS,
@@ -26,11 +27,15 @@ import {
 import { BEDWARS_EVENTS, bedWarsNextEvent } from "./events";
 import {
   BEDWARS_PRESTIGES,
+  BEDWARS_PRESTIGE_BRACKETS,
+  BEDWARS_PRESTIGE_STARS,
   bedWarsPrestigeName,
+  bedWarsStarSymbol,
   bedWarsStarTag,
 } from "./prestiges";
 import { BEDWARS_SHOP_ITEMS, BEDWARS_SHOP_UPGRADES } from "./shop";
-import { BEDWARS_DREAM_MODES } from "./modes";
+import { BEDWARS_DREAM_MODES, BEDWARS_MODES, bedWarsModeOf } from "./modes";
+import { BEDWARS_GENERATOR_TIERS, bedWarsGeneratorTier } from "./generators";
 import { BEDWARS_CHALLENGES } from "./challenges";
 import { BEDWARS_XP_SOURCES } from "./xp";
 import { BEDWARS_QUESTS, BEDWARS_IN_GAME_CHALLENGES } from "./quests";
@@ -57,13 +62,18 @@ import {
 /** Every BedWars dataset and helper, bundled into one object. */
 export const BedWars = {
   teams: BEDWARS_TEAMS,
+  teamOrder: BEDWARS_TEAM_ORDER,
   maps: BEDWARS_MAPS,
   mapHeights: BEDWARS_MAP_HEIGHTS,
   events: BEDWARS_EVENTS,
   prestiges: BEDWARS_PRESTIGES,
+  prestigeStars: BEDWARS_PRESTIGE_STARS,
+  prestigeBrackets: BEDWARS_PRESTIGE_BRACKETS,
   shopItems: BEDWARS_SHOP_ITEMS,
   shopUpgrades: BEDWARS_SHOP_UPGRADES,
   dreamModes: BEDWARS_DREAM_MODES,
+  modes: BEDWARS_MODES,
+  generatorTiers: BEDWARS_GENERATOR_TIERS,
   challenges: BEDWARS_CHALLENGES,
   xpSources: BEDWARS_XP_SOURCES,
   quests: BEDWARS_QUESTS,
@@ -87,8 +97,10 @@ export const BedWars = {
   },
   prestigeName: bedWarsPrestigeName,
   starTag: bedWarsStarTag,
+  starSymbol: bedWarsStarSymbol,
+  modeOf: bedWarsModeOf,
+  generatorTier: bedWarsGeneratorTier,
   mapHeight: bedWarsMapHeight,
   isMap: isBedWarsMap,
   nextEvent: bedWarsNextEvent,
 } as const;
-

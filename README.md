@@ -25,9 +25,9 @@
 
 ## About
 
-Breezil-Hypixel-Utils is a fully open-source TypeScript library: a static "info hub" for Hypixel. It bundles the reference data and render helpers you need to interpret and display Hypixel data the public API does not serve, things like ranks and colours, BedWars teams, prestiges and coloured star tags, shop prices, map build heights, the event timeline, XP gains, challenges, quests, achievements, and every cosmetic family.
+Breezil-Hypixel-Utils is a fully open-source TypeScript library: a static "info hub" for Hypixel. It bundles the reference data and render helpers you need to interpret and display Hypixel data the public API does not serve, things like ranks and colours, every Hypixel game and its modes, BedWars teams, prestiges and coloured star tags (including Prestige Customizer looks), modes and generator tiers, shop prices, map build heights, the event timeline, XP gains, challenges, quests, achievements, every cosmetic family, and TNT Games wins prefixes and maps.
 
-It is pure: no network, no config, no side effects, and works standalone in any project. The library is partitioned by minigame so it can grow to cover the whole network (BedWars today; more games slot in as siblings).
+It is pure: no network, no config, no side effects, and works standalone in any project. The library is partitioned by minigame so it can grow to cover the whole network (BedWars and TNT Games today; more games slot in as siblings).
 
 This README is a summary. The **[full reference lives in the docs](https://breezil.github.io/Breezil-Hypixel-Utils/)**, where every export, type, and data table is documented in detail.
 
@@ -74,14 +74,16 @@ A brief pass over everything. See the [docs](https://breezil.github.io/Breezil-H
 
 | Area                     | What you get                                                                                                                                                                                                                                                                                                                                                                  |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **General**              | Minecraft colour codes, staff rank tags, and `formatRankTag` to build a player's coloured rank. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/ranks)                                                                                                                                                                                                       |
-| **BedWars: Prestiges**   | All 101 prestiges (level 1 to 10000) with names and colour codes, plus `bedWarsStarTag` and `bedWarsPrestigeName`. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/bedwars/prestiges)                                                                                                                                                                        |
+| **General**              | Minecraft colour codes, staff rank tags, and `formatRankTag` to build a player's coloured rank from a raw or parsed player. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/ranks)                                                                                                                                                                           |
+| **BedWars: Prestiges**   | All 101 prestiges (level 1 to 10000) with names and colour codes, plus `bedWarsStarTag` (default or Prestige Customizer look), `bedWarsStarSymbol`, and `bedWarsPrestigeName`. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/bedwars/prestiges)                                                                                                            |
 | **BedWars: Shop**        | Every item-shop price and team-upgrade cost, with Solo/Doubles vs 3s/4s differences. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/bedwars/shop)                                                                                                                                                                                                           |
-| **BedWars: Game**        | The 8 teams, the full map list, per-map build heights, the event timeline, current XP gains, and dream modes. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/bedwars/game)                                                                                                                                                                                  |
+| **BedWars: Game**        | The 8 teams and their order, the full map list, per-map build heights, the event timeline, generator tiers, the standard modes, current XP gains, and dream modes. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/bedwars/game)                                                                                                                             |
 | **BedWars: Progression** | Challenges, daily/weekly quests, and the full achievement set. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/bedwars/progression)                                                                                                                                                                                                                          |
 | **BedWars: Cosmetics**   | Projectile trails, victory dances, final kill effects, sprays, island toppers, glyphs, shopkeeper skins, kill messages, death cries, bed destroys, wood skins, and figurines. [Gameplay](https://breezil.github.io/Breezil-Hypixel-Utils/reference/bedwars/cosmetics-gameplay) / [Visual](https://breezil.github.io/Breezil-Hypixel-Utils/reference/bedwars/cosmetics-visual) |
+| **Games**                | Every Hypixel game and its modes, as a player's location reports them, with `hypixelGame`. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/games)                                                                                                                                                                                                            |
+| **TNT Games**            | `tntGamesPrefixTag` for the coloured wins prefix, and every TNT Tag map. [Docs](https://breezil.github.io/Breezil-Hypixel-Utils/reference/tntgames)                                                                                                                                                                                                                           |
 
-Every dataset is exported by name (for example `BEDWARS_PRESTIGES`, `BEDWARS_SHOP_ITEMS`, `BEDWARS_SPRAYS`) and is also reachable through `HypixelReference.bedwars` (or the `BedWars` export).
+Every dataset is exported by name (for example `BEDWARS_PRESTIGES`, `BEDWARS_SHOP_ITEMS`, `BEDWARS_SPRAYS`) and is also reachable through the `HypixelReference` aggregate (`HypixelReference.bedwars`, `HypixelReference.tntgames`, `HypixelReference.games`).
 
 ## Documentation
 
@@ -102,11 +104,13 @@ Breezil-Hypixel-Utils/
 ├─ src/
 │  ├─ index.ts            # Entry point + HypixelReference aggregate
 │  ├─ ranks.ts            # General: Minecraft colours, staff tags, formatRankTag
+│  ├─ games.ts            # General: every Hypixel game and its modes
 │  └─ bedwars/            # Everything BedWars, one file per dataset
 │     ├─ index.ts         # BedWars barrel + BedWars aggregate
 │     ├─ prestiges.ts  shop.ts  maps.ts  events.ts  xp.ts
-│     ├─ modes.ts  challenges.ts  quests.ts  achievements.ts  teams.ts
+│     ├─ modes.ts  generators.ts  challenges.ts  quests.ts  achievements.ts  teams.ts
 │     └─ cosmetics/       # One file per cosmetic family
+│  └─ tntgames/           # TNT Games: wins prefixes, TNT Tag maps
 ├─ docs/                  # VitePress docs site
 └─ package.json
 ```
@@ -161,4 +165,3 @@ Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for the full tex
 <div align="center">
 <sub>Built with 💙 by <a href="https://github.com/Breezil">Breezil</a>.</sub>
 </div>
-
